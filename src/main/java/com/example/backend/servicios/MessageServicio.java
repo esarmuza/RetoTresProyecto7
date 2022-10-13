@@ -19,19 +19,19 @@ public class MessageServicio {
     public List<Message> getAll(){
         return MessageRepository.getAll();
     }
-    public Optional<Message> getMessageId(int id){
+    public Optional<Message> getMessageId(int idMessage){
         /*Con Optional sucede lo siguienete: Cuando llegue un Message sin id  indica que no esta en la BD
          y se guardara, si llega con id se valida que no exista en la BD ese id, y se guarda.
          Si ese id ya existe se devuelve  y no se guarda  */
-        return MessageRepository.getId(id);
+        return MessageRepository.getId(idMessage);
     }
     public Message save(Message comp){
         //Si id es null entonces el id, el coomputer es nuevo,entonces guardelo
-        if(comp.getId()==null){
+        if(comp.getIdMessage()==null){
             return MessageRepository.save(comp);
         }
         else{
-            Optional<Message> computAux=MessageRepository.getId(comp.getId());
+            Optional<Message> computAux=MessageRepository.getId(comp.getIdMessage());
             //Aqui se valida si comp existe o no
             if(computAux.isEmpty()){
                 return MessageRepository.save(comp);
@@ -42,8 +42,8 @@ public class MessageServicio {
         }
     }
     public Message update(Message mensaje ){
-        if(mensaje.getId() !=null){
-            Optional<Message> e =MessageRepository.getId (mensaje.getId());
+        if(mensaje.getIdMessage() !=null){
+            Optional<Message> e =MessageRepository.getId (mensaje.getIdMessage());
             if(!e.isEmpty()){
                 if(mensaje.getMessageText() !=null){
                     e.get().setMessageText(mensaje.getMessageText());

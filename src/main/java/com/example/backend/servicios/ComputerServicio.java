@@ -51,7 +51,7 @@ public class ComputerServicio {
                 if(computador.getYear() !=null){
                     e.get().setYear(computador.getYear());
                 }
-                if(computador.getCategory() !=null){
+                 if(computador.getCategory() !=null){
                     e.get().setCategory(computador.getCategory());
                 }
                 if(computador.getName() !=null){

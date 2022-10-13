@@ -22,8 +22,8 @@ public class MessageRepository {
     }
     /*Optional es un tipo de Objeto de java, que si hay informacion en la BD la entrega y si
      no la hay  entrega el objeto aunque no haya encontrado algo en la BD */
-    public Optional<Message> getId(int id){
-        return MessageCrudRepository.findById(id);
+    public Optional<Message> getId(int idMessage){
+        return MessageCrudRepository.findById(idMessage);
     }
     public Message save(Message Message){
         return MessageCrudRepository.save(Message);

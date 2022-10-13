@@ -18,7 +18,7 @@ public class Message implements Serializable {
     //Par aque sea auto incrementable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Definimos los campos de la tabla
-    private Integer id;
+    private Integer idMessage;
     private String messageText;
     //Relacion con Computer
     @ManyToOne
@@ -33,15 +33,15 @@ public class Message implements Serializable {
     @JsonIgnoreProperties({"messages", "reservations"})
     private Client client;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdMessage() {
+        return idMessage;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
-    public String getMessageText() {
+        public String getMessageText() {
         return messageText;
     }
 

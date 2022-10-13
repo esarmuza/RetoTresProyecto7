@@ -34,8 +34,8 @@ public class ControlMessage {
     @GetMapping("/{id}")
     //El cuerpo de lapeticion dentra como una variable de la ruta, se emplea @PathVariable,
     // entonces debe atender lo que en la ruta es id
-    public Optional<Message> getMessage(@PathVariable ("id") int id ){
-        return messageServicio.getMessageId(id);
+    public Optional<Message> getMessage(@PathVariable ("idMessage") int idMessage ){
+        return messageServicio.getMessageId(idMessage);
     }
     @PostMapping("/save")
     /*Cuando se envian datos por el metodo POST, el metodo debe saber a travez de un parametro, que lo que envia el
