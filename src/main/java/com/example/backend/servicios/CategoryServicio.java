@@ -47,6 +47,9 @@ public class CategoryServicio {
                 if(categoria.getName() !=null){
                     e.get().setName(categoria.getName());
                 }
+                if(categoria.getDescription() !=null){
+                    e.get().setDescription(categoria.getDescription());
+                }
                 /*Si la salida es negativa o null */
                 CategoryRepository.save(e.get());
                 return e.get();

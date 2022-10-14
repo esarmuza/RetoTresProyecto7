@@ -57,6 +57,9 @@ public class ComputerServicio {
                 if(computador.getName() !=null){
                     e.get().setName(computador.getName());
                 }
+                if(computador.getDescription() !=null){
+                    e.get().setName(computador.getDescription());
+                }
                 /*Si la salida es negativa o null */
                 computerRepository.save(e.get());
                 return e.get();
