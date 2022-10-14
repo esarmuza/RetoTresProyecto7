@@ -17,7 +17,6 @@ a la BD a la Tabla. Gestiona las peticiones que lleguen de Postman, del FrontEnd
 /* Estas lineas es para no permitir realizar peticiones desde un sitio que no conocemos,desconocido */
 //@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE}
 @CrossOrigin ( origins = "*" , methods ={ RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE } )
-
 public class ControlComputer {
     /*Se crea un servicio. Auto Instanciacion @Autowired */
     @Autowired

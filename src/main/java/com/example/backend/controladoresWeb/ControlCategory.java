@@ -16,7 +16,7 @@ a la BD a la Tabla. Gestiona las peticiones que lleguen de Postman, del FrontEnd
 @RequestMapping("/api/Category")
 //Se debe crrear un metodo por cada paticion a travez de CategoryServicio
 /* Estas lineas es para no permitir realizar peticiones desde un sitio que no conocemos,desconocido */
-//@CrossOrigin ( origins = "*" , methods ={ RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE } )
+@CrossOrigin ( origins = "*" , methods ={ RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE } )
 public class ControlCategory {
     /*Se crea un servicio. Auto Instanciacion @Autowired */
     @Autowired
