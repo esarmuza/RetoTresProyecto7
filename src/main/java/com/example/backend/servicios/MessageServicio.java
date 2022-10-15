@@ -33,7 +33,7 @@ public class MessageServicio {
         else{
             Optional<Message> computAux=MessageRepository.getId(comp.getIdMessage());
             //Aqui se valida si comp existe o no
-            if(computAux.isEmpty()){
+            if(computAux.isPresent()){
                 return MessageRepository.save(comp);
             }
             else{
@@ -44,7 +44,7 @@ public class MessageServicio {
     public Message update(Message mensaje ){
         if(mensaje.getIdMessage() !=null){
             Optional<Message> e =MessageRepository.getId (mensaje.getIdMessage());
-            if(!e.isEmpty()){
+            if(e.isPresent()){
                 if(mensaje.getMessageText() !=null){
                     e.get().setMessageText(mensaje.getMessageText());
                 }

@@ -32,7 +32,7 @@ public class CategoryServicio {
         else{
             Optional<Category> categoAux=CategoryRepository.getId(catego.getId());
             //Aqui se valida si comp existe o no
-            if(categoAux.isEmpty()){
+            if(categoAux.isPresent()){
                 return CategoryRepository.save(catego);
             }
             else{
@@ -43,7 +43,7 @@ public class CategoryServicio {
     public Category update(Category categoria ){
         if(categoria.getId() !=null){
             Optional<Category> e =CategoryRepository.getId (categoria.getId());
-            if(!e.isEmpty()){
+            if(e.isPresent()){
                 if(categoria.getName() !=null){
                     e.get().setName(categoria.getName());
                 }

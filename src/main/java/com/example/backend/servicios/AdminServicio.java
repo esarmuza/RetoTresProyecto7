@@ -33,7 +33,7 @@ public class AdminServicio {
         else{
             Optional<Admin> adminAux=AdminRepository.getId(serv.getIdAdmin());
             //Aqui se valida si comp existe o no
-            if(adminAux.isEmpty()){
+            if(adminAux.isPresent()){
                 return AdminRepository.save(serv);
             }
             else{
@@ -44,7 +44,7 @@ public class AdminServicio {
     public Admin update(Admin  administrador ){
         if(administrador.getIdAdmin() !=null){
             Optional<Admin> e =AdminRepository.getId (administrador.getIdAdmin());
-            if(!e.isEmpty()){
+            if(e.isPresent()){
                 if(administrador.getName() !=null){
                     e.get().setName(administrador.getName());
                 }

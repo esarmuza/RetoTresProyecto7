@@ -33,7 +33,7 @@ public class ScoreServicio {
         else{
             Optional<Score> computAux=ScoreRepository.getId(comp.getIdScore());
             //Aqui se valida si comp existe o no
-            if(computAux.isEmpty()){
+            if(computAux.isPresent()){
                 return ScoreRepository.save(comp);
             }
             else{
@@ -44,7 +44,7 @@ public class ScoreServicio {
     public Score update(Score premio ){
         if(premio.getIdScore() !=null){
             Optional<Score> e =ScoreRepository.getId (premio.getIdScore());
-            if(!e.isEmpty()){
+            if(e.isPresent()){
                 if(premio.getMessageText() !=null){
                     e.get().setMessageText(premio.getMessageText());
                 }

@@ -33,7 +33,7 @@ public class ComputerServicio {
         else{
             Optional<Computer> computAux=computerRepository.getId(comp.getId());
             //Aqui se valida si comp existe o no
-            if(computAux.isEmpty()){
+            if(computAux.isPresent()){
                 return computerRepository.save(comp);
             }
             else{
@@ -44,7 +44,7 @@ public class ComputerServicio {
     public Computer update(Computer computador ){
         if(computador.getId() !=null){
             Optional<Computer> e =computerRepository.getId (computador.getId());
-            if(!e.isEmpty()){
+            if(e.isPresent()){
                 if(computador.getBrand() !=null){
                     e.get().setBrand(computador.getBrand());
                 }

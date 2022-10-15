@@ -33,7 +33,7 @@ public class ClientServicio {
         else{
             Optional<Client> computAux=ClientRepository.getId(client.getIdClient());
             //Aqui se valida si comp existe o no
-            if(computAux.isEmpty()){
+            if(computAux.isPresent()){
                 return ClientRepository.save(client);
             }
             else{
@@ -44,7 +44,7 @@ public class ClientServicio {
     public Client update(Client cliente ){
         if(cliente.getIdClient() !=null){
             Optional<Client> e =ClientRepository.getId (cliente.getIdClient());
-            if(!e.isEmpty()){
+            if(e.isPresent()){
                 if(cliente.getName() !=null){
                     e.get().setName(cliente.getName());
                 }

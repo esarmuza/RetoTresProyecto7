@@ -39,7 +39,7 @@ public class ReservationServicio {
         else{
             Optional<Reservation> reservAux=reservationRepository.getId(reserva.getIdReservation());
             //Aqui se valida si comp existe o no
-            if(reservAux.isEmpty()){
+            if(reservAux.isPresent()){
                 return reservationRepository.save(reserva);
             }
             else{
@@ -50,7 +50,7 @@ public class ReservationServicio {
     public Reservation update(Reservation reservacion ){
         if(reservacion.getIdReservation() !=null){
             Optional<Reservation> e =reservationRepository.getId (reservacion.getIdReservation());
-            if(!e.isEmpty()){
+            if(e.isPresent()){
                 if(reservacion.getStartDate() !=null){
                     e.get().setStartDate(reservacion.getStartDate());
                 }
