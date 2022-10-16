@@ -1,5 +1,8 @@
 package com.example.backend.servicios;
+import com.example.backend.modelo.Client;
 import com.example.backend.modelo.Reservation;
+import com.example.backend.modelopersonal.CountClient;
+import com.example.backend.modelopersonal.StatusAmount;
 import com.example.backend.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -83,24 +86,30 @@ public class ReservationServicio {
     }
     public List<Reservation> reservaEntreFechas(String fechaUno, String fechaDos){
         //Aquí obtienes el formato que deseas
-        SimpleDateFormat yearMesDia = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"
-        );
-        System.out.println(java.time.LocalDateTime.now());
+        SimpleDateFormat yearMesDia = new SimpleDateFormat("yyyy-MM-dd");  //HH:mm:ss.SSS
+        //System.out.println(java.time.LocalDateTime.now());
         Date inicio=new Date();
         Date fin=new Date();
-        //SimpleDateFormat unamas = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        //String fechaActual= "2020-08-14T21:02:51";
         try{
             inicio = yearMesDia.parse(fechaUno);
-             //"2020-06-01T11:20:15"
             fin = yearMesDia.parse(fechaDos);
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            //throw new RuntimeException(e);
         }
         if(inicio.before(fin)){
             return reservationRepository.getReservationPeriod(inicio, fin);
         }else {
             return new ArrayList<>();
         }
+    }
+    //Codigo tutoria reto Cinco gabriela 15/10/2022
+    public StatusAmount getReservationStatusReport(){
+        List<Reservation> completed=reservationRepository.getReservationByStatus("completed");
+        List<Reservation> cancelled=reservationRepository.getReservationByStatus("cancelled");
+        return new StatusAmount(completed.size(), cancelled.size());
+    }
+    public List<CountClient> getTopClients(){
+        return reservationRepository.getTopClients();
     }
 }

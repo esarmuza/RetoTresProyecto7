@@ -1,5 +1,7 @@
 package com.example.backend.controladoresWeb;
 import com.example.backend.modelo.Reservation;
+import com.example.backend.modelopersonal.CountClient;
+import com.example.backend.modelopersonal.StatusAmount;
 import com.example.backend.repository.ReservationRepository;
 import com.example.backend.servicios.ReservationServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +72,21 @@ public class ControlReservation {
     }
     //El cuerpo de lapeticion dentra como una variable de la ruta, se emplea @PathVariable,
     // entonces debe atender lo que en la ruta es id
-    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    /*@GetMapping("/report-dates/{dateOne}/{dateTwo}")
     public List<Reservation> getReservationsReportDates(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo) {
+        return reservationServicio.reservaEntreFechas(dateOne, dateTwo);
+    }*/
+    //Codigo tutoria reto cinco Gabriela
+    @GetMapping("/report-clients")
+    public List<CountClient> getReservationReportClient(){
+        return reservationServicio.getTopClients();
+    }
+    @GetMapping("/report-status")
+    public StatusAmount getReservationStatus(){
+        return reservationServicio.getReservationStatusReport();
+    }
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getResevationReportDate(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo ){
         return reservationServicio.reservaEntreFechas(dateOne, dateTwo);
     }
 }
